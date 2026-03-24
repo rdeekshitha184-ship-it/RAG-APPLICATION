@@ -25,3 +25,4 @@ sentence-transformers
 #for frontend
 
 reflex==0.8.27
+gunicorn
