@@ -17,7 +17,7 @@ def about():
                 ),
 
                 rx.heading("⚙️ Key Features", size="5"),
-                rx.text("• Upload and process PDF, TXT, CSV files"),
+                rx.text("• Upload and process PDF, TXT, files"),
                 rx.text("• Ask questions in natural language"),
                 rx.text("• Context-aware AI responses"),
                 rx.text("• Confidence score and source tracking"),

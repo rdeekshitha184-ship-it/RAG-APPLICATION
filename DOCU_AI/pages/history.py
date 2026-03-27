@@ -49,7 +49,7 @@ def history():
             margin_top="20px"
         ),
 
-        footer(),
+        #footer(),
 
         padding="40px"
     )
