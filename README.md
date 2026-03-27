@@ -5,16 +5,7 @@ This project is a Retrieval-Augmented Generation (RAG) based application that al
 
 It uses embeddings and similarity search to retrieve relevant information and generate accurate responses.
 
----
 
-## 🛠️ Tech Stack
-- Python
-- Reflex (UI)
-- LangChain
-- HuggingFace Embeddings
-- FAISS (Vector Store)
-
----
 
 ## 📸 Working Demo
 ### 📊 Dashboard
