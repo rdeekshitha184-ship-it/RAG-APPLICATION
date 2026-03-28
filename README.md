@@ -9,7 +9,7 @@ It uses embeddings and similarity search to retrieve relevant information and ge
 
 ## 📸 Working Demo
 ### 📊 Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshots/DASHBOARD.png)
 
 ### 📤 Upload Page
 ![Upload](screenshots/upload.png)
@@ -27,7 +27,7 @@ It uses embeddings and similarity search to retrieve relevant information and ge
 ![History](screenshots/History1.jpeg)
 
 ### 📜 About
-![About](screenshots/about.jpeg)
+![About](screenshots/ABOUT.jpeg)
 
 ---
 
