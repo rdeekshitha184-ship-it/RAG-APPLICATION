@@ -9,28 +9,25 @@ It uses embeddings and similarity search to retrieve relevant information and ge
 
 ## 📸 Working Demo
 ### 📊 Dashboard
-![Dashboard](screenshots/DASHBOARD.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### 📤 Upload Page
-![Upload](screenshots/UPLOADPAGE.png)
+![Upload](screenshots/upload.png)
+
+### 📤 Upload Page
+![Upload](screenshots/upload1.jpeg)
 
 ### 💬 Chat Interface
-![Chat](screenshots/CHATS.jpeg)
-
-### 💬 Chat Interface
-![Chat](screenshots/CHATSS.png)
-
-### 💬 Chat Interface
-![Chat](screenshots/CHATSSS.jpeg)
+![Chat](screenshots/chat.jpeg)
 
 ### 📜 History
-![History](screenshots/MainHistory.jpeg)
+![History](screenshots/history.jpeg)
 
 ### 📜 History
 ![History](screenshots/History1.jpeg)
 
 ### 📜 About
-![About](screenshots/ABOUT.jpeg)
+![About](screenshots/about.jpeg)
 
 ---
 
