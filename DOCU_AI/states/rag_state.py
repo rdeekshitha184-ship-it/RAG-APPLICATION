@@ -7,34 +7,35 @@ from DOCU_AI.backend.rag import get_answer
 from pydantic import BaseModel
 import os
 
-# ✅ Create proper data model
+
 class ChatItem(BaseModel):
     question: str
     answer: str
     sources: str
 
 
-
 class ChatState(rx.State):
     question: str = ""
     history: List[ChatItem] = []
-    is_loading: bool = False   # ✅ ADD THIS
+    is_loading: bool = False
 
     def set_question(self, value: str):
         self.question = value
 
-    def ask_question(self):
+    async def ask_question(self):
         if not self.question.strip():
             return
 
-        self.is_loading = True   # 🔥 START LOADING
+        # Show spinner immediately before LLM call
+        self.is_loading = True
+        yield
 
         answer, sources = get_answer(self.question)
 
         if isinstance(sources, list):
             sources = ", ".join([os.path.basename(s) for s in sources])
         else:
-            sources = os.path.basename(sources)    
+            sources = os.path.basename(sources)
 
         new_item = ChatItem(
             question=self.question,
@@ -43,33 +44,26 @@ class ChatState(rx.State):
         )
 
         self.history = self.history + [new_item]
-
         self.question = ""
-        self.is_loading = False   # 🔥 STOP LOADING
+        self.is_loading = False
 
-    def clear_history(self):##
-       self.history = []    
+    def clear_history(self):
+        self.history = []
 
     def download_chat(self):
-
         file_path = "assets/chat_history.pdf"
 
         doc = SimpleDocTemplate(file_path)
         styles = getSampleStyleSheet()
-
         elements = []
 
-    # Loop through chat history
         for item in self.history:
             elements.append(Paragraph(f"<b>Question:</b> {item.question}", styles["Normal"]))
             elements.append(Spacer(1, 10))
-
             elements.append(Paragraph(f"<b>Answer:</b> {item.answer}", styles["Normal"]))
             elements.append(Spacer(1, 10))
-
             elements.append(Paragraph(f"<b>Sources:</b> {item.sources}", styles["Normal"]))
             elements.append(Spacer(1, 20))
 
         doc.build(elements)
-
-        return rx.download("/chat_history.pdf")   # 🔥 IMPORTANT   
+        return rx.download("/chat_history.pdf")

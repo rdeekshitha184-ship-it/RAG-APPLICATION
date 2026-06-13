@@ -220,12 +220,13 @@ def chat() -> rx.Component:
                 value=ChatState.question,
                 on_change=ChatState.set_question,
 
-                # 🔥 ENTER KEY SUPPORT
+                #🔥 ENTER KEY SUPPORT
                 on_key_down=lambda key: rx.cond(
                     key == "Enter",
                     ChatState.ask_question(),
                     rx.noop()
                 ),
+                #on_key_down=ChatState.handle_key_down,
 
                 width="100%",
                 size="3",

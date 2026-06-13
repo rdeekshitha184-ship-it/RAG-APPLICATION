@@ -11,6 +11,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
+#print("GROQ:", os.getenv("GROQ_API_KEY"))
 
 # -------------------------------
 # Initialize LLM
@@ -186,6 +187,8 @@ def get_answer(query: str):
     answer, sources = corrective_rag(query)
     return answer, sources
     #return corrective_rag(query)
+# def get_answer(query: str):
+#     return "Working perfectly 🚀", ["demo.pdf"]
 
 
 # -------------------------------

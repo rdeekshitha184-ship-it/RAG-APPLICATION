@@ -1,68 +1,39 @@
-# # *.py[cod]
-# # *.db
-# # .web
-# # .states
-# # assets/external/
-# # __pycache__/
+# Environment variables — NEVER commit these
+.env
+.env.local
+.env.*.local
 
-# *.py[cod]
-# *.db
-# .web
-# .states
-# assets/external/
-# __pycache__/
-
-# # 🔐 Secrets
-# .env
-
-# # 📂 RAG Data
-# chroma_db/
-# uploads/
-# documents/
-
-
-# -------------------------------
-# Python cache & compiled files
-# -------------------------------
+# Python
 __pycache__/
 *.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
 
-# -------------------------------
-# Environment variables (IMPORTANT 🔐)
-# -------------------------------
-.env
-
-# -------------------------------
-# Virtual environment
-# -------------------------------
+# Virtual environments
 venv/
 .venv/
+env/
 
-# -------------------------------
-# Database / Vector store (RAG)
-# -------------------------------
+# Reflex build artifacts
+.web/
+.reflex/
+
+# Vector database (auto-rebuilt on startup)
 chroma_db/
-*.db
 
-# -------------------------------
-# Uploaded / local documents
-# -------------------------------
-uploads/
-documents/
+# Uploaded documents (user data, not part of source)
+documents/*
+!documents/.gitkeep
 
-# -------------------------------
-# OS / system files
-# -------------------------------
+# OS files
 .DS_Store
 Thumbs.db
 
-# -------------------------------
-# Reflex build files
-# -------------------------------
-.web/
-.states
-
-# -------------------------------
-# Misc
-# -------------------------------
-*.log
+# IDE
+.vscode/
+.idea/
