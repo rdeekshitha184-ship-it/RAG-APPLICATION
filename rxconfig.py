@@ -2,7 +2,9 @@ import reflex as rx
 
 config = rx.Config(
     app_name="DOCU_AI",
-    #api_url="https://f5613b0f-9da9-4cd8-a31a-25cfd99f2037.fly.dev",
+    api_url="https://docu-ai-bjrt.onrender.com",
+    frontend_port=3000,
+    backend_port=8000,
     plugins=[
         rx.plugins.SitemapPlugin(),
         rx.plugins.TailwindV4Plugin(),
