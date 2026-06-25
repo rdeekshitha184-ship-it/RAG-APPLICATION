@@ -1,3 +1,7 @@
+.states
+assets/external/
+.web
+*.db
 # Environment variables — NEVER commit these
 .env
 .env.local

@@ -1,28 +1,29 @@
-#LangChain Core
+# LangChain Core
 langchain
 langchain-core
 langchain_community
+langchain-text-splitters
 
-#Grog
+# Groq LLM
 langchain-groq
 
-#Environment Variable Management
+# Environment Variable Management
 python-dotenv
 
-#streamlit
-streamlit
-
+# PDF Processing
 pypdf
 pymupdf
-unstructured
 pdfminer.six
-unstructured_pytesseract
-unstructured_inference
 
+# Embeddings
 langchain-huggingface
 sentence-transformers
 
-#for frontend
+# PDF Export
+reportlab
 
+# Frontend
 reflex==0.8.27
+
+# Production Server
 gunicorn
