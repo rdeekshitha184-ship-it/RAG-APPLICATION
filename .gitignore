@@ -1,6 +1,5 @@
 .states
 assets/external/
-.web
 *.db
 # Environment variables — NEVER commit these
 .env
@@ -24,7 +23,10 @@ venv/
 env/
 
 # Reflex build artifacts
-.web/
+.web/*
+!.web/build/
+!.web/build/client/
+!.web/build/client/**
 .reflex/
 
 # Vector database (auto-rebuilt on startup)
@@ -41,5 +43,5 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
-.states/ 
-reflex.lock/ 
+.states/
+reflex.lock/
