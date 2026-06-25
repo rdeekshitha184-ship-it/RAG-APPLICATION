@@ -25,7 +25,7 @@ chromadb
 reportlab
 
 # Frontend
-reflex==0.8.27
+reflex==0.9.5
 
 # Production Server
 gunicorn
