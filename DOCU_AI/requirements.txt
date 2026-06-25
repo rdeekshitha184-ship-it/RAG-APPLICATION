@@ -15,9 +15,11 @@ pypdf
 pymupdf
 pdfminer.six
 
-# Embeddings
-langchain-huggingface
-sentence-transformers
+# Embeddings (lightweight - no torch/nvidia!)
+fastembed
+
+# Vector Store
+chromadb
 
 # PDF Export
 reportlab

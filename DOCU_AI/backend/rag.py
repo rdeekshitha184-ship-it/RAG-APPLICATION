@@ -1,8 +1,8 @@
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import DirectoryLoader, PyPDFLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import FastEmbedEmbeddings
 from dotenv import load_dotenv
 import os
 
@@ -13,7 +13,7 @@ load_dotenv()
 # -------------------------------
 vectorstore = None
 retriever = None
-llm = None  # ← initialized lazily, NOT at module level
+llm = None
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCUMENT_PATH = os.path.join(BASE_DIR, "documents")
@@ -36,7 +36,7 @@ def get_llm():
 def build_vectorstore():
     global retriever, vectorstore
 
-    print("🔄 Rebuilding Vector DB...")
+    print("Rebuilding Vector DB...")
 
     pdf_loader = DirectoryLoader(
         path=DOCUMENT_PATH,
@@ -58,7 +58,7 @@ def build_vectorstore():
     docs = pdf_docs + txt_docs
 
     if not docs:
-        print("⚠️ No documents found!")
+        print("No documents found!")
         retriever = None
         return
 
@@ -68,8 +68,9 @@ def build_vectorstore():
     )
     splitted_docs = splitter.split_documents(docs)
 
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    # FastEmbed — lightweight, no torch/nvidia needed
+    embedding_model = FastEmbedEmbeddings(
+        model_name="BAAI/bge-small-en-v1.5"
     )
 
     vectorstore = Chroma.from_documents(
@@ -82,7 +83,7 @@ def build_vectorstore():
         search_kwargs={"k": 3, "lambda_mult": 0.7}
     )
 
-    print("✅ Vector DB Ready!")
+    print("Vector DB Ready!")
 
 
 # -------------------------------
@@ -108,7 +109,7 @@ def corrective_rag(query):
 
     model = get_llm()
 
-    print("\n🔍 Initial Retrieval")
+    print("Initial Retrieval")
     retrieved_docs = retriever.invoke(query)
     context, sources = format_docs(retrieved_docs)
 
@@ -127,7 +128,7 @@ def corrective_rag(query):
 
     # Query Rewrite if needed
     if "NO" in evaluation.upper():
-        print("✏️ Rewriting Query...")
+        print("Rewriting Query...")
         rewrite_prompt = f"""
         The query '{query}' did not retrieve relevant documents.
         Rewrite it to improve retrieval quality.
