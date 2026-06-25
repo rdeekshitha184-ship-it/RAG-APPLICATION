@@ -2,6 +2,7 @@
 langchain
 langchain-core
 langchain_community
+langchain-text-splitters
 
 # Groq LLM
 langchain-groq
@@ -13,15 +14,12 @@ python-dotenv
 pypdf
 pymupdf
 pdfminer.six
-unstructured
-unstructured_pytesseract
-unstructured_inference
 
 # Embeddings
 langchain-huggingface
 sentence-transformers
 
-# PDF Generation (for chat history download)
+# PDF Export
 reportlab
 
 # Frontend
